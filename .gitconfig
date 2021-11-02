@@ -1,0 +1,7 @@
+[user]
+	name = Morten Scheel
+	email = morten@mortenscheel.com
+[git]
+	protocol = ssh
+[init]
+	defaultBranch = master
