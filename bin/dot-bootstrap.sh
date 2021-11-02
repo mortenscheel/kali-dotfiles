@@ -36,6 +36,10 @@ if is-missing gh; then
 	brew install gh
 fi
 
+if [ ! -d /opt/SecLists ]; then
+	sudo git clone https://github.com/danielmiessler/SecLists /opt/SecLists
+fi
+
 for apt_bin in terminator; do
 	if is-missing $apt_bin; then
 		sudo apt install $apt_bin
