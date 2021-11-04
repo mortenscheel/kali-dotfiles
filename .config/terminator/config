@@ -5,9 +5,11 @@
   title_inactive_bg_color = "#23252e"
   suppress_multiple_term_dialog = True
   always_split_with_profile = True
+  clear_select_on_copy = True
 [keybindings]
   split_horiz = <Primary>d
   split_vert = <Primary><Shift>d
+  close_term = <Primary>w
   paste = <Primary>v
 [profiles]
   [[default]]

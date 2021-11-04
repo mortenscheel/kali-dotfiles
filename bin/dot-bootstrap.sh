@@ -22,6 +22,15 @@ if is-missing subl; then
 	sudo apt update
 	apt install sublime-text
 fi
+if is-missing docker; then
+	sudo apt install -y curl gnupg2 apt-transport-https software-properties-common ca-certificates
+	curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+	echo "deb [arch=amd64] https://download.docker.com/linux/debian buster stable" | sudo tee /etc/apt/sources.list.d/docker.list
+	sudo apt update
+	sudo apt install -y docker-ce docker-ce-cli containerd.io
+	sudo usermod -aG docker kali
+	newgrp docker
+fi
 
 if is-missing brew; then
 	# Homebrew
