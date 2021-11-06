@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+sudo cp /usr/share/X11/xkb/symbols/dk /usr/share/X11/xkb/symbols/dk.original
+sudo cp $HOME.config/xkb-layouts/dk /usr/share/X11/xkb/symbols/dk
+
+setxkbmap -layout dk -variant mac_nodeadkeys
