@@ -51,7 +51,7 @@ if [ ! -d /opt/SecLists ]; then
 	sudo git clone https://github.com/danielmiessler/SecLists /opt/SecLists
 fi
 
-for apt_bin in terminator gobuster; do
+for apt_bin in terminator gobuster tldr; do
 	if is-missing $apt_bin; then
 		sudo apt install $apt_bin
 	fi
