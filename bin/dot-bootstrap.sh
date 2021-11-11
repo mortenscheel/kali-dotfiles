@@ -9,7 +9,7 @@ if ! timedatectl | grep -q "Copenhagen"; then
 fi
 
 if ! locale -a | grep -q da_DK; then
-	sudo sed -i 's/# da_DK/da_DK/g' /etc/locale.gen
+	sudo sed -E -i 's/# (da|en)_DK/\1_DK/g' /etc/locale.gen
 	sudo locale-gen
 fi
 
@@ -20,7 +20,7 @@ if is-missing subl; then
 	wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 	echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 	sudo apt update
-	apt install sublime-text
+	sudo apt install sublime-text
 fi
 if is-missing docker; then
 	sudo apt install -y curl gnupg2 apt-transport-https software-properties-common ca-certificates
@@ -28,13 +28,15 @@ if is-missing docker; then
 	echo "deb [arch=amd64] https://download.docker.com/linux/debian buster stable" | sudo tee /etc/apt/sources.list.d/docker.list
 	sudo apt update
 	sudo apt install -y docker-ce docker-ce-cli containerd.io
-	sudo usermod -aG docker kali
+	sudo usermod -aG docker $USER
 	newgrp docker
 fi
 
 if is-missing brew; then
 	# Homebrew
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+	test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 if [ ! -f /home/linuxbrew/.linuxbrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh ]; then
@@ -49,7 +51,7 @@ if [ ! -d /opt/SecLists ]; then
 	sudo git clone https://github.com/danielmiessler/SecLists /opt/SecLists
 fi
 
-for apt_bin in terminator; do
+for apt_bin in terminator gobuster tldr steghide; do
 	if is-missing $apt_bin; then
 		sudo apt install $apt_bin
 	fi

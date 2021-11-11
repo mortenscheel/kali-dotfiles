@@ -26,10 +26,10 @@
       type = Window
       parent = ""
       order = 0
-      position = 1280:31
-      maximised = False
+      position = 0:31
+      maximised = True
       fullscreen = False
-      size = 1270, 1263
+      size = 1440, 778
       title = kali@kali: ~
       last_active_term = 1eaf45cb-ab8a-4cdc-a20d-8a6db801a8ad
       last_active_window = True
