@@ -47,8 +47,11 @@ if is-missing gh; then
 	brew install gh
 fi
 
-if [ ! -d /opt/SecLists ]; then
-	sudo git clone https://github.com/danielmiessler/SecLists /opt/SecLists
+if is-missing pwncat; then
+	sudo apt install python3-venv
+	sudo python3 -m venv /opt/pwncat
+	sudo /opt/pwncat/bin/pip install git+https://github.com/calebstewart/pwncat
+	sudo ln -s /opt/pwncat/bin/pwncat /usr/local/bin
 fi
 
 for apt_bin in terminator gobuster tldr steghide; do
