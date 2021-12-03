@@ -7,8 +7,12 @@
   always_split_with_profile = True
   clear_select_on_copy = True
 [keybindings]
-  split_horiz = <Primary>d
-  split_vert = <Primary><Shift>d
+  go_up = <Super>Up
+  go_down = <Super>Down
+  go_left = <Super>Left
+  go_right = <Super>Right
+  split_horiz = <Super>underscore
+  split_vert = <Super>asterisk
   close_term = <Primary>w
   paste = <Primary>v
 [profiles]

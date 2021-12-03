@@ -12,3 +12,4 @@ addalias() {
 alias ys="yadm status"
 alias rustscan='docker run -it --rm --name rustscan rustscan/rustscan:1.10.0'
 alias yac="yadm add -u && yadm commit && yadm push"
+alias src="exec $SHELL"
