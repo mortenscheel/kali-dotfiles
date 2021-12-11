@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+hostsfile=/etc/hosts
+if [ ! -f "$hostsfile" ]; then
+    echo "$hostsfile not found"
+    exit 1
+fi
+
+arg=${1:-list}
+
+case "$arg" in
+"list" | "-l")
+    grep "^127\.0\.0\.1" "$hostsfile" | awk '{print $2}' | sort -f
+    ;;
+"add" | "-a")
+    host=${2:-}
+    if [[ -z $host ]]; then
+        echo hostname missing
+        exit 1
+    fi
+    ip="${3:-127.0.0.1}"
+    echo "$ip $host" | sudo tee -a "$hostsfile" && echo "$host" added
+    ;;
+esac
