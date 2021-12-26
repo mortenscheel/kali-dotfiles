@@ -13,3 +13,10 @@ alias ys="yadm status"
 alias rustscan='docker run -it --rm --name rustscan rustscan/rustscan:1.10.0'
 alias yac="yadm add -u && yadm commit && yadm push"
 alias src="exec $SHELL"
+
+getip(){
+	iface="${1:-eth0}"
+	ip="$(ip -4 addr show $iface | grep -oP '(?<=inet\s)\d+(\.\d+){3}')"
+	echo "$iface: $ip"
+	echo "$ip" | xclip -sel clip
+}
