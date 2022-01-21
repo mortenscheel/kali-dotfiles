@@ -10,7 +10,7 @@ arg=${1:-list}
 
 case "$arg" in
 "list" | "-l")
-    grep "^127\.0\.0\.1" "$hostsfile" | awk '{print $2}' | sort -f
+    cat $hostsfile
     ;;
 "add" | "-a")
     host=${2:-}
