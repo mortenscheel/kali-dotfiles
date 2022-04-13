@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 hostsfile=/etc/hosts
 if [ ! -f "$hostsfile" ]; then
@@ -11,6 +11,9 @@ arg=${1:-list}
 case "$arg" in
 "list" | "-l")
     cat $hostsfile
+    ;;
+"reset")
+    sudo cp /etc/hosts.org /etc/hosts
     ;;
 "add" | "-a")
     host=${2:-}
