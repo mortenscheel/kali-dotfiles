@@ -28,3 +28,5 @@ alias gfa="git fetch --all"
 alias gcm="git commit -m "
 alias gac='git add . && git commit -m'
 alias nah="git reset --hard && git clean -df"
+
+alias pwncat=pwncat-cs

@@ -1,4 +1,3 @@
-fpath+=("$HOME/.zsh/completions")
 #
 # Options
 #
