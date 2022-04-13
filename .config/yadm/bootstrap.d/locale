@@ -1,0 +1,9 @@
+#!/bin/bash
+if ! timedatectl | grep -q "Copenhagen" && confirm Set timezone to Europe/Copenhagen?; then
+	sudo timedatectl set-timezone Europe/Copenhagen
+fi
+
+if ! locale -a | grep -q da_DK && confirm Install Danish locales?; then
+	sudo sed -E -i 's/# (da|en)_DK/\1_DK/g' /etc/locale.gen
+	sudo locale-gen
+fi
