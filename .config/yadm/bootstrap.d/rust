@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ ! -d $HOME/.cargo ]; then
+    curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
+fi
+if ! command -v cargo; then
+    source $HOME/.cargo/env
+fi
+echo go
+crates=(
+    topgrade
+    starship
+    du-dust
+    exa
+    tealdeer
+    cargo-update
+    ripgrep
+    fd-find
+)
+cargo install ${crates[@]}
