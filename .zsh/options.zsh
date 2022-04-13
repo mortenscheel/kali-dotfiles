@@ -6,3 +6,5 @@ setopt HIST_IGNORE_ALL_DUPS
 
 # Remove path separator from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/]}
+
+[ -z $EDITOR ] && export EDITOR=nano
