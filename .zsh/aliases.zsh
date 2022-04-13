@@ -30,3 +30,4 @@ alias gac='git add . && git commit -m'
 alias nah="git reset --hard && git clean -df"
 
 alias pwncat=pwncat-cs
+alias zshedit='code $HOME/.zshrc $HOME/.zimrc $HOME/.zsh'
