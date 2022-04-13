@@ -12,7 +12,7 @@ addalias() {
 alias ys="yadm status"
 alias rustscan='docker run -it --rm --name rustscan rustscan/rustscan:1.10.0'
 alias yac="yadm add -u && yadm commit && yadm push"
-alias src="exec $(which zsh) && rm $HOME/.cache/zcompdump && compinit"
+alias src="zimfw clean -q && zimfw compile -q && exec $(which zsh)"
 
 getip(){
 	iface="${1:-eth0}"
@@ -20,3 +20,11 @@ getip(){
 	echo "$iface: $ip"
 	echo "$ip" | xclip -sel clip
 }
+alias gs="git status"
+alias gl="git log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gadd="git add ."
+alias co="git checkout"
+alias gfa="git fetch --all"
+alias gcm="git commit -m "
+alias gac='git add . && git commit -m'
+alias nah="git reset --hard && git clean -df"
