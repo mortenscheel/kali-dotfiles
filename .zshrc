@@ -28,6 +28,13 @@ bindkey '^[[H' beginning-of-line                  # home
 bindkey '^[[F' end-of-line                        # end
 bindkey '^[[Z' undo                               # shift + tab undo last action
 
+
+typeset -U path PATH
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH:$HOME/.cargo/env
+
+export LC_TIME="da_DK.UTF8"
+fpath+=("$HOME/.zsh/completion")
+
 # enable completion features
 autoload -Uz compinit
 compinit -d ~/.cache/zcompdump
@@ -255,11 +262,5 @@ for script in $HOME/.zsh/**/*.zsh; do
     source $script
 done
 
-
-typeset -U path PATH
-export PATH=$HOME/bin:$HOME/.local/bin:$PATH:$HOME/.cargo/env
-
-export LC_TIME="da_DK.UTF8"
-fpath+=("$HOME/.zsh/completion")
 
 export SSH_AUTH_SOCK

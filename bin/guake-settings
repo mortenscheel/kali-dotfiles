@@ -1,0 +1,13 @@
+#!/bin/bash
+
+case ${1:-} in
+export)
+    dconf dump /apps/guake/ >$HOME/.config/guake/settings.dconf
+    ;;
+import)
+    dconf load /apps/guake/ <$HOME/.config/guake/settings.dconf
+    ;;
+*)
+    echo "import/export required"
+    ;;
+esac
