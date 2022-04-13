@@ -1,6 +1,7 @@
 load_order=(
   $HOME/.localrc
   $HOME/.zsh/path.zsh
+  $HOME/.zsh/files.zsh
   $HOME/.zsh/options.zsh
   $HOME/.zsh/completion.zsh
   $HOME/.zsh/zim-init.zsh
