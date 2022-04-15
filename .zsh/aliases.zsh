@@ -10,10 +10,9 @@ addalias() {
 	source ~/.zsh/aliases.zsh
 }
 alias ys="yadm status"
-alias rustscan='docker run -it --rm --name rustscan rustscan/rustscan:1.10.0'
 alias yac="yadm add -u && yadm commit && yadm push"
 alias src="zimfw clean -q && zimfw build -q && zimfw compile -q && exec $(which zsh)"
-
+alias rustscan="rustscan --ulimit 5000 -a"
 getip(){
 	iface="${1:-eth0}"
 	ip="$(ip -4 addr show $iface | grep -oP '(?<=inet\s)\d+(\.\d+){3}')"
