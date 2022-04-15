@@ -6,14 +6,21 @@ if [ ! -f "$hostsfile" ]; then
     exit 1
 fi
 
+print_hosts() {
+    grep -v "^#" "$hostsfile" | column -t
+}
+
 arg=${1:-list}
 
 case "$arg" in
 "list" | "-l")
-    cat $hostsfile
+    print_hosts
     ;;
-"reset")
-    sudo cp /etc/hosts.org /etc/hosts
+"backup")
+    sudo cp "$hostsfile" "$hostsfile.bak" && echo "$hostsfile backed up to $hostsfile.bak"
+    ;;
+"restore")
+    sudo cp "$hostsfile.bak" "$hostsfile" && echo "$hostsfile reset from backup"
     ;;
 "add" | "-a")
     host=${2:-}
@@ -22,6 +29,12 @@ case "$arg" in
         exit 1
     fi
     ip="${3:-127.0.0.1}"
-    echo "$ip $host" | sudo tee -a "$hostsfile" && echo "$host" added
+    escaped=$(echo $host | sed 's/[][\.|$(){}?+*^]/\\&/g')
+    if grep -q "\s${escaped}$" "$hostsfile"; then
+        echo "$host is already defined"
+        print_hosts | grep "\s${escaped}$"
+    else
+        echo "$ip $host" | sudo tee -a "$hostsfile"
+    fi
     ;;
 esac
