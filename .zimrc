@@ -22,6 +22,9 @@ zmodule cowboyd/zsh-rust
 zmodule unixorn/fzf-zsh-plugin
 zmodule ajeetdsouza/zoxide
 zmodule exa
+
+zmodule RobSis/zsh-completion-generator
+
 #
 # Prompt
 #

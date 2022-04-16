@@ -8,3 +8,5 @@ setopt HIST_IGNORE_ALL_DUPS
 WORDCHARS=${WORDCHARS//[\/]}
 
 [ -z $EDITOR ] && export EDITOR=nano
+export GENCOMPL_FPATH="$HOME/.zsh/completions"
+zstyle :plugin:zsh-completion-generator programs fd
