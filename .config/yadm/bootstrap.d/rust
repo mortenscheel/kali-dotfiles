@@ -16,5 +16,6 @@ crates=(
     cargo-update
     ripgrep
     fd-find
+    zoxide
 )
 cargo install ${crates[@]}

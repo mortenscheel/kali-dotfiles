@@ -1,5 +1,5 @@
 #!/bin/bash
-if ! timedatectl | grep -q "Copenhagen" && confirm Set timezone to Europe/Copenhagen?; then
+if ! timedatectl | grep -q "Copenhagen"; then
 	sudo timedatectl set-timezone Europe/Copenhagen
 fi
 
