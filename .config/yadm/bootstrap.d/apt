@@ -1,4 +1,46 @@
 #!/bin/bash
 
+packages=(
+    # Tools
+    build-essential
+    docker.io
+    docker-compose
+    # Python build deps
+    libbz2-dev
+    libsqlite3-dev
+    libreadline-dev
+    libssl-dev
+    pkg-config
+    zlib1g-dev
+    # PHP build deps
+    autoconf
+    bison
+    build-essential
+    curl
+    gettext
+    git
+    libgd-dev
+    libcurl4-openssl-dev
+    libedit-dev
+    libicu-dev
+    libjpeg-dev
+    libonig-dev
+    libpng-dev
+    libpq-dev
+    libreadline-dev
+    libsqlite3-dev
+    libssl-dev
+    libxml2-dev
+    libzip-dev
+    openssl
+    pkg-config
+    re2c
+    zlib1g-dev
+)
 sudo apt update
-sudo apt install -y build-essential libbz2-dev libsqlite3-dev libreadline-dev libssl-dev pkg-config zlib1g-dev
+sudo apt install -y ${packages[@]}
+
+if ! id -nG "$USER" | grep -q docker; then
+    sudo usermod -aG docker $USER
+    echo $USER added to docker group. Requires logout.
+fi
