@@ -5,6 +5,11 @@ if [ ! -f "$hostsfile" ]; then
     echo "$hostsfile not found"
     exit 1
 fi
+if [[ "$1" = "-h" ]]; then
+    echo "hosts add {domain} [ip]"
+    echo "hosts backup"
+    echo "hosts restore"
+fi
 
 print_hosts() {
     grep -v "^#" "$hostsfile" | column -t
