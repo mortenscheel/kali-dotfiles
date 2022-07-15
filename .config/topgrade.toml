@@ -57,7 +57,7 @@ repos = [
 # Custom commands
 [commands]
 #"Python Environment" = "~/dev/.env/bin/pip install -i https://pypi.python.org/simple -U --upgrade-strategy eager jupyter"
-"Update Linpeas" = "cd ~/tools/PEASS-ng/linPEAS && python -m builder.linpeas_builder"
+#"Update Linpeas" = "cd ~/tools/PEASS-ng/linPEAS && python -m builder.linpeas_builder"
 
 [brew]
 #greedy_cask = true
