@@ -40,6 +40,12 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ssp=searchsploit
 
+# Docker
+alias dps="docker ps"
+alias dc="docker-compose"
+alias dcr="docker run --rm -it"
+alias dce="docker-compose exec"
+
 # tools
 alias nmap-scan="sudo nmap -sV -Pn -sS -A -O -vv -T4"
 alias dirscan-md="gobuster dir -w $dirlist_md -u"
