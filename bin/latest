@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+REPO="$1"
+FILE="${2:-}"
+
+if [[ "$REPO" = "linpeas" ]]; then
+    REPO="carlospolop/peass-ng"
+    FILE="linpeas.sh"
+fi
+
+if [[ -z "$FILE" ]]; then
+    echo "Unknown file"
+    exit 1
+fi
+
+LATEST=$(curl -L -s -H 'Accept: application/json' https://github.com/$REPO/releases/latest | jq -r ".tag_name")
+URL="https://github.com/$REPO/releases/download/$LATEST/$FILE"
+
+echo "Downloading latest version ($LATEST) of $FILE"
+
+wget --quiet $URL
